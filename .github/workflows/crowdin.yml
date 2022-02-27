@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        include:
-          - webhook_url: ${{ secrets.WEBHOOK_URL_VERCEL }}
-          - webhook_url: ${{ secrets.WEBHOOK_URL_NETLIFY }}
-          - webhook_url: ${{ secrets.WEBHOOK_URL_CLOUDFLARE }}
+        webhook_url:
+          - ${{ secrets.WEBHOOK_URL_VERCEL }}
+          - ${{ secrets.WEBHOOK_URL_NETLIFY }}
+          - ${{ secrets.WEBHOOK_URL_CLOUDFLARE }}
     steps:
       - name: Trigger Webhook use cURL
         env:
