@@ -18,8 +18,10 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn
+      - name: Sync with Crowdin
+        run: yarn crowdin:sync
       - name: Build
-        run: yarn build || true
+        run: yarn build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
