@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform:
-          - vercel
-          - netlify
-          - cloudflare
+        include:
+          - webhook_url: ${{ secrets.WEBHOOK_URL_VERCEL }}
+          - webhook_url: ${{ secrets.WEBHOOK_URL_NETLIFY }}
+          - webhook_url: ${{ secrets.WEBHOOK_URL_CLOUDFLARE }}
     steps:
       - name: Trigger Webhook use cURL
         env:
-          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL_${{ matrix.platform }} }}
+          WEBHOOK_URL: ${{ matrix.webhook_url }}
         run: curl -X POST ${{ env.WEBHOOK_URL }}
 
   build:
