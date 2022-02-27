@@ -1,6 +1,7 @@
 name: pull-translation-from-crowdin
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: 45 11 * * *
 
