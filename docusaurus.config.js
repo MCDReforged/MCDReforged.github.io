@@ -5,7 +5,7 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
-const config = {
+module.exports = {
   title: 'MCDReforged',
   tagline: 'A rewritten version of MCDaemon, a python script to control your Minecraft server',
   url: 'https://MCDReforged.github.io',
@@ -15,6 +15,21 @@ const config = {
   favicon: 'img/favicon.png',
   organizationName: 'MCDReforged', // Usually your GitHub org/user name.
   projectName: 'MCDReforged.github.io', // Usually your repo name.
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        htmlLang: 'en-US',
+      },
+      zh: {
+        label: '简体中文',
+        htmlLang: 'zh-CN',
+      },
+    },
+  },
 
   presets: [
     [
@@ -49,6 +64,10 @@ const config = {
             docId: 'index',
             position: 'left',
             label: 'Docs',
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
           },
           {
             href: 'https://github.com/Fallen-Breath/MCDReforged',
@@ -96,5 +115,3 @@ const config = {
       },
     }),
 };
-
-module.exports = config;
