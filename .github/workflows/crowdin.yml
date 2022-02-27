@@ -1,0 +1,59 @@
+name: pull-translation-from-crowdin
+
+on:
+  schedule:
+    - cron: 45 11 * * *
+
+jobs:
+  trigger:
+    name: Trigger Webhooks
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform:
+          - vercel
+          - netlify
+          - cloudflare
+    steps:
+      - name: Trigger Webhook use cURL
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL_${{ matrix.platform }} }}
+        run: curl -X POST ${{ env.WEBHOOK_URL }}
+
+  build:
+    name: Pull Translations and Build Site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn
+      - name: Pull from Crowdin
+        env:
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+        run: yarn crowdin:pull
+      - name: Build
+        run: yarn build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          force_orphan: true
