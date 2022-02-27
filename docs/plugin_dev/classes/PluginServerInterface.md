@@ -2,7 +2,7 @@
 title: PluginServerInterface
 ---
 
-Derived from [ServerInterface](ServerInterface.html),
+Derived from [ServerInterface](ServerInterface.md),
 PluginServerInterface adds the ability for plugins to control the plugin
 itself on the basis of ServerInterface
 
@@ -24,7 +24,7 @@ indicates the target event for the plugin to listen
 Parameter *callback*: The callback listener method for the event
 
 Parameter *priority*: The priority of the listener. It will be set to
-the default value 1000 if it\'s not specified
+the default value 1000 if it's not specified
 
 #### register_command
 
@@ -48,7 +48,7 @@ command
 
 Parameter *prefix*: The help command of your plugin. When player click
 on the displayed message it will suggest this prefix parameter to the
-player. It\'s recommend to set it to the entry command of your plugin
+player. It's recommend to set it to the entry command of your plugin
 
 Parameter *message*: A neat command description. It can be a str or a
 RText. Also it can be a dict maps from language to description message
@@ -149,7 +149,7 @@ object will be filled using the default config
 Parameter *file_name*: The name of the config file. It can also be a
 path to the config file
 
-Parameter *default_config*: A dict contains the default config. It\'s
+Parameter *default_config*: A dict contains the default config. It's
 required when the config file is missing, or exception will be risen. If
 target_class is given and default_config is missing, the default values
 in target_class will be used when the config file is missing
@@ -160,11 +160,11 @@ operating is the [data folder](#get-data-folder) of the plugin
 Parameter *echo_in_console*: If logging messages in console about config
 loading
 
-Parameter *source_to_reply*: The [command source](CommandSource.html)
+Parameter *source_to_reply*: The [command source](CommandSource.md)
 for replying logging messages
 
 Parameter *target_class*: A class derived from
-[Serializable](../api.html#serializable). When specified the loaded
+[Serializable](../api.md#serializable). When specified the loaded
 config data will be deserialized to a instance of target_class which
 will be returned as return value
 

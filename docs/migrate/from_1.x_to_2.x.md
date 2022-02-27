@@ -1,13 +1,10 @@
 ---
-title: Migrate from MCDR 1.x to 2.x
+title: From MCDR 1.x to 2.x
 ---
 
-Migrating from MCDR 1.x to MCDR 2.x is easier than migrating from 0.x
-for most plugins. Some of the MCDR 1.x plugins can work as expected
-without any modification
+Migrating from MCDR 1.x to MCDR 2.x is easier than migrating from 0.x for most plugins. Some of the MCDR 1.x plugins can work as expected without any modification
 
-Other than plugins, the permission / configure parts of MCDR has no
-changes, so you can just continuously use your MCDR 1.x files
+Other than plugins, the permission / configure parts of MCDR has no changes, so you can just continuously use your MCDR 1.x files
 
 ## Plugin
 
@@ -15,38 +12,26 @@ The most changes between MCDR 1.x and MCDR 2.x is the plugin system
 
 ### Metadata
 
-You can no longer use `RText` instance as the value of your plugin
-metadata. `name` and `description` fields in `RText` class will be
-automatically converted into `str` for compatibility
+You can no longer use `RText` instance as the value of your plugin metadata. `name` and `description` fields in `RText` class will be automatically converted into `str` for compatibility
 
-This changes is to ensure the consistence between [Solo
-Plugin](../plugin_dev/plugin_format.html#solo-plugin) (the plugin format
-before MCDR 2.x) and [Multi file
-Plugin](../plugin_dev/plugin_format.html#multi-file-plugin) which use a
-`.json` file to declare their metadata
+This changes is to ensure the consistence between [Solo Plugin](../plugin_dev/plugin_format.md#solo-plugin) (the plugin format before MCDR 2.x) and [Multi file Plugin](../plugin_dev/plugin_format.md#multi-file-plugin) which use a `.json` file to declare their metadata
 
 ### Event
 
-There are several changes to plugin event about plugin lifecycle to make
-the lifecycle more complete
+There are several changes to plugin event about plugin lifecycle to make the lifecycle more complete
 
--   `Plugin Removed` event is removed
--   `Plugin Unload` event will be dispatched when MCDR stopped
+- `Plugin Removed` event is removed
+- `Plugin Unload` event will be dispatched when MCDR stopped
 
-With that the plugin lifecycle can be covered with 2 events, [Plugin
-Loaded](../plugin_dev/event.html#plugin-loaded) and [Plugin
-Unloaded](../plugin_dev/event.html#plugin-unloaded)
+With that the plugin lifecycle can be covered with 2 events, [Plugin Loaded](../plugin_dev/event.md#plugin-loaded) and [Plugin Unloaded](../plugin_dev/event.md#plugin-unloaded)
 
 ### Modules
 
-Due to how MCDR 2.x plugin loading logic works, you can no longer places
-your external libs modules into your `plugin/` folder and import them,
-since MCDR will not append the plugin folders into `sys.path` any more
+Due to how MCDR 2.x plugin loading logic works, you can no longer places your external libs modules into your `plugin/` folder and import them, since MCDR will not append the plugin folders into `sys.path` any more
 
-For example, the following codes with the given files structure won\'t
-work in MCDR 2.x, although it works in 1.x
+For example, the following codes with the given files structure won't work in MCDR 2.x, although it works in 1.x
 
-``` 
+``` text
 plugins/
     my_lib/
         __init__.py
@@ -61,48 +46,36 @@ from my_lib import do_something
 do_something()
 ```
 
-To resolve this issue, you can reorganize your plugin file structure
-into the [Multi file
-Plugin](../plugin_dev/plugin_format.html#multi-file-plugin) format and
-insert your lib your multi file plugin
+To resolve this issue, you can reorganize your plugin file structure into the [Multi file Plugin](../plugin_dev/plugin_format.md#multi-file-plugin) format and insert your lib your multi file plugin
 
 ### ServerInterface
 
-APIs used for plugin registry operation related to current plugin in
-`ServerInterface` class is now split to a derived class
-`PluginServerInterface`, other general MCDR control APIs are not affects
+APIs used for plugin registry operation related to current plugin in `ServerInterface` class is now split to a derived class `PluginServerInterface`, other general MCDR control APIs are not affects
 
 For example, these APIs are moved to `PluginServerInterface`
 
--   `register_event_listener`
--   `register_command`
--   `get_data_folder`
--   \...
+- `register_event_listener`
+- `register_command`
+- `get_data_folder`
+- ...
 
 But these APIs are not affected
 
--   `start`
--   `execute`
--   `get_plugin_list`
--   `get_permission_level`
--   \...
+- `start`
+- `execute`
+- `get_plugin_list`
+- `get_permission_level`
+- ...
 
-When invoking the event listener callback of you plugin, MCDR will send
-a `PluginServerInterface` as the first parameter, so the usability of
-the server interface API is not affected
+When invoking the event listener callback of you plugin, MCDR will send a `PluginServerInterface` as the first parameter, so the usability of the server interface API is not affected
 
-These changes should not affect your plugin\'s runnability, but it will
-probably mess up the type checking code inspect in your IDE to make the
-IDE displays a warning
+These changes should not affect your plugin's runnability, but it will probably mess up the type checking code inspect in your IDE to make the IDE displays a warning
 
 ### Command
 
-The original `ArgumentNode` class is now split into `AbstractNode` and
-`ArgumentNode`. Most of the functionalities are inside `AbstractNode`
-but the name field is moved to `ArgumentNode`
+The original `ArgumentNode` class is now split into `AbstractNode` and `ArgumentNode`. Most of the functionalities are inside `AbstractNode` but the name field is moved to `ArgumentNode`
 
-For your custom command node classes, you might only need to change some
-related type hints
+For your custom command node classes, you might only need to change some related type hints
 
-Documents: [AbstractNode](../plugin_dev/command.html#abstractnode),
-[ArgumentNode](../plugin_dev/command.html#argumentnode)
+Documents: [AbstractNode](../plugin_dev/command.md#abstractnode),
+[ArgumentNode](../plugin_dev/command.md#argumentnode)

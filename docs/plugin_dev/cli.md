@@ -77,7 +77,7 @@ files/folders into the packed plugin:
 -   Folder named by the plugin id
 -   File `mcdreforged.plugin.json`
 -   File `requirements.txt`, if it exists
--   Files or folders listed in the [resources](metadata.html#resources)
+-   Files or folders listed in the [resources](metadata.md#resources)
     field in metadata
 
 During plugin packing, all directory with name `__pycache__` will be
@@ -119,9 +119,9 @@ ignored
 > A specific name for the output packed plugin file
 >
 > If not given it will use the
-> [archive_name](metadata.html#archive-name) field in plugin metadata
+> [archive_name](metadata.md#archive-name) field in plugin metadata
 >
-> If it\'s still not specific, A default name format will be used
+> If it's still not specific, A default name format will be used
 >
 > You can use formatter in your name string. String like `{arg_name}` in
 > name will be replaced automatically. Use `{{` or `}}` for single `{`
@@ -133,12 +133,12 @@ ignored
 > For example, with `id=my_plugin` and `version=1.2.3`, the following
 > formatting will happen
 >
-> -   `MyCustomPlugin-release` -\> `MyCustomPlugin-release`
-> -   `MyCustomPlugin-v{version}` -\> `MyCustomPlugin-v1.2.3`
-> -   `{id}_{version}` -\> `my_plugin_1.2.3`
+> -   `MyCustomPlugin-release` -> `MyCustomPlugin-release`
+> -   `MyCustomPlugin-v{version}` -> `MyCustomPlugin-v1.2.3`
+> -   `{id}_{version}` -> `my_plugin_1.2.3`
 >
 > If file extension is included in the name and the file extension is a
-> valid [packed plugin](plugin_format.html#packed-plugin) extension
+> valid [packed plugin](plugin_format.md#packed-plugin) extension
 > (`.mcdr` or `.pyz`), then the included file extension will be used.
 > Otherwise the default `.mcdr` file extension will be appended to the
 > end

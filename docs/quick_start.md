@@ -17,10 +17,7 @@ pip install mcdreforged
 ```
 
 For Chinese users, you can added a
-`-i https://pypi.tuna.tsinghua.edu.cn/simple` prefix to the command to
-use [Tsinghua tuna
-mirror](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/) to speed up the
-installation
+`-i https://pypi.tuna.tsinghua.edu.cn/simple` prefix to the command to use [Tsinghua TUNA Mirror](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/) to speed up the installation.
 
 ``` bash
 pip install mcdreforged -i https://pypi.tuna.tsinghua.edu.cn/simple
@@ -28,19 +25,16 @@ pip install mcdreforged -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 ## Start up
 
-Let's say your are going to start MCDR in a folder named
-`my_mcdr_server`. Then you can run the following commands to initialize
-the environment for MCDR first:
+Let's say your are going to start MCDR in a folder named `my_mcdr_server`. Then you can run the following commands to initialize the environment for MCDR first.
 
 ``` bash
 cd my_mcdr_server
 python -m mcdreforged init
 ```
 
-MCDR will generated the default configure and permission files, as well
-as some default folders. The file structure will be like this
+MCDR will generated the default configure and permission files, as well as some default folders. The file structure will be like this:
 
-``` 
+``` text
 my_mcdr_server/
  ├─ config/
  ├─ logs/
@@ -51,12 +45,9 @@ my_mcdr_server/
  └─ permission.yml
 ```
 
-Now put your server files into the server folder (`server` by default),
-then modify the configuration file `config.yml` and permission file
-`permission.yml` correctly
+Now put your server files into the server folder (`server` by default), then modify the configuration file `config.yml` and permission file `permission.yml` correctly.
 
-After that you can launch MCDR, and it will start handling the server
-correctly
+After that you can launch MCDR, and it will start handling the server correctly.
 
 ``` bash
 python -m mcdreforged
@@ -64,8 +55,7 @@ python -m mcdreforged
 
 ## Upgrade
 
-With the help of [pypi](https://pypi.org/project/mcdreforged/), MCDR can
-be easily upgraded via a single command
+With the help of [PyPI](https://pypi.org/project/mcdreforged/), MCDR can be easily upgraded via a single command:
 
 ``` bash
 pip install mcdreforged --upgrade
@@ -73,26 +63,21 @@ pip install mcdreforged --upgrade
 
 That's it!
 
-For Chinese users, you can use tuna mirror to speed up the upgrading too
+For Chinese users, you can use tuna mirror to speed up the upgrading too.
 
 ``` bash
 pip install mcdreforged --upgrade -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-Development builds are available in [Test
-PyPi](https://test.pypi.org/project/mcdreforged/#history), you can
-install them if you have special needs
+Development builds are available in [TestPyPI](https://test.pypi.org/project/mcdreforged/#history), you can install them if you have special needs.
 
 ## Launch from source
 
-Instead of installing MCDR from pypi, you can execute the source file of
-MCDR directly. **Notes: This is mostly for development purpose, DO NOT
-use it under a production environment**
+Instead of installing MCDR from pypi, you can execute the source file of MCDR directly. **Notes: This is mostly for development purpose, DO NOT use it under a production environment**
 
-Download the source files of MCDR via cloning the repository or github
-action, and decompress the file if needed
+Download the source files of MCDR via cloning the repository or github action, and decompress the file if needed
 
-``` 
+``` text
 my_mcdr_server_in_source/
  ├─ mcdreforged/
  │   └─ ..
@@ -101,11 +86,9 @@ my_mcdr_server_in_source/
  └─ ..
 ```
 
-MCDR will delay to start if the mcdreforged python package is not
-detected
+MCDR will delay to start if the mcdreforged python package is not detected
 
-So enter the directory `my_mcdr_server_in_source/`, and run the
-following command to create egg_info to pass the detection
+So enter the directory `my_mcdr_server_in_source/`, and run the following command to create egg_info to pass the detection
 
 ``` bash
 python setup.py egg_info
@@ -123,8 +106,7 @@ Alternatively you can execute `MCDReforged.py` with python to start MCDR
 python MCDReforged.py
 ```
 
-`MCDReforged.py` is just a simple wrapper for launching MCDR with the
-following codes
+`MCDReforged.py` is just a simple wrapper for launching MCDR with the following codes
 
 ``` python
 import sys
@@ -137,6 +119,4 @@ if __name__ == '__main__':
 
 `MCDReforged.py` also works for MCDR installed by `pip` command
 
-For windows users, if you have bound a correct python interpreter to
-`*.py` files you can also double click the `MCDReforged.py` to start
-MCDR
+For windows users, if you have bound a correct python interpreter to `*.py` files you can also double click the `MCDReforged.py` to start MCDR

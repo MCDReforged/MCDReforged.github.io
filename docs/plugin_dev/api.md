@@ -20,7 +20,7 @@ from mcdreforged.api.all import *
 ```
 
 This is the simplest way to import everything you want for plugin
-development. It\'s a life saver for lazy man
+development. It's a life saver for lazy man
 
 Continue reading to see what it will actually import
 
@@ -58,9 +58,9 @@ daemon thread
 This decorator only changes the return value of the function to the
 created `Thread` instance. Beside the return value, it reserves all
 signatures of the decorated function, so you can safely use the
-decorated function as if there\'s no decorating at all
+decorated function as if there's no decorating at all
 
-It\'s also a simple compatible upgrade method for old MCDR 0.x plugins
+It's also a simple compatible upgrade method for old MCDR 0.x plugins
 
 Example:
 
@@ -85,10 +85,10 @@ def on_info(server, info):
 
 The only difference between `do_something1` and `do_something2` is that
 `do_something2` is decorated by `@new_thread`. So when executing
-`do_something2`, it won\'t lag the following execution of MCDR like
+`do_something2`, it won't lag the following execution of MCDR like
 `do_something1` since `do_something2` will execute on another thread
 
-About the returned value of the decorated function, it\'s a
+About the returned value of the decorated function, it's a
 `FunctionThread` object. Inherited from `Thread`, it has 1 extra method
 comparing to the `Thread` class:
 
@@ -96,7 +96,7 @@ comparing to the `Thread` class:
 def get_return_value(self, block: bool = False, timeout: Optional[float] = None)
 ```
 
-As the name of the method, it\'s used to get the return value of the
+As the name of the method, it's used to get the return value of the
 original function. An `RuntimeError` will be risen if `block=False` and
 the thread is still alive, then if exception occurs in the thread the
 exception will be risen here
@@ -114,7 +114,7 @@ the `FunctionThread` instance
 do_something2('task').join()
 ```
 
-In addition to simply and directly use a raw `@new_thread`, it\'s
+In addition to simply and directly use a raw `@new_thread`, it's
 recommend to add a thread name argument for the decorator
 
 ``` python
@@ -138,13 +138,13 @@ print(do_something2.original('task'))  # will be "task"
 
 This decorator is used to register a custom event listener without
 involving
-[PluginServerInterface](classes/PluginServerInterface.html#register-event-listener)
+[PluginServerInterface](classes/PluginServerInterface.md#register-event-listener)
 
 It accepts a single str or PluginEvent indicating the event you are
 listening to as parameter, and will register the function as the
 callback of the given listener
 
-It\'s highly suggested to use this decorator only in the entry point of
+It's highly suggested to use this decorator only in the entry point of
 your plugin so it can work correctly and register the event listener in
 the correct time
 
@@ -169,7 +169,7 @@ def on_load(server, old):
 classes of MCDR built-in events
 
 You might already read the
-[dispatch_event](classes/ServerInterface.html#dispatch-event) method in
+[dispatch_event](classes/ServerInterface.md#dispatch-event) method in
 `ServerInterface` class. It only accepts a `PluginEvent` instance as its
 first parameter. So if you want to dispatch your custom event, create a
 `LiteralEvent` for simpleness or a custom event class inherited from
@@ -178,12 +178,12 @@ first parameter. So if you want to dispatch your custom event, create a
 ## exception
 
 There some custom exceptions that is used in MCDR runtime e.g.
-[ServerInterface](classes/ServerInterface.html) methods. Here comes the
+[ServerInterface](classes/ServerInterface.md) methods. Here comes the
 way to import them
 
 ## rcon
 
-Package `rcon` contains a single class `RconConnection`. It\'s is a
+Package `rcon` contains a single class `RconConnection`. It's is a
 simply rcon client for connect to any Minecraft servers that supports
 rcon protocol
 
@@ -201,7 +201,7 @@ Parameter *port*: The port if the rcon server
 
 Parameter *password*: The password of the rcon connection
 
-Keyword Parameter *logger*: An instance of `logging.Logger`. It\'s used
+Keyword Parameter *logger*: An instance of `logging.Logger`. It's used
 to output some warning information like failing to receive a packet
 
 #### connect
@@ -290,7 +290,7 @@ by [Pandaria98](https://github.com/Pandaria98)
 
 ### RTextBase
 
-`RTextBase` is an abstract class of text component. It\'s the base class
+`RTextBase` is an abstract class of text component. It's the base class
 of `RText` and `RTextList`
 
 #### to_json_object
@@ -301,7 +301,7 @@ def to_json_object(self)
 
 Abstract method
 
-Return an object representing it\'s data that can be serialized into
+Return an object representing it's data that can be serialized into
 json string
 
 #### to_json_str
@@ -310,7 +310,7 @@ json string
 def to_json_str(self) -> str
 ```
 
-Return a json formatted str representing it\'s data. It can be used as
+Return a json formatted str representing it's data. It can be used as
 the second parameter in command `/tellraw <target> <message>` and more
 
 #### to_plain_text
@@ -440,7 +440,7 @@ can be a `RStyle` or a collection of `RStyle`
 
 ### RTextTranslation
 
-The translation text component class. It\'s almost the same as `RText`
+The translation text component class. It's almost the same as `RText`
 
 #### RTextTranslation
 
@@ -495,7 +495,7 @@ has no child element
 The translation text component used in MCDR
 
 When MCDR is running, it will use the
-[tr](classes/ServerInterface.html#tr) method in `ServerInterface` class
+[tr](classes/ServerInterface.md#tr) method in `ServerInterface` class
 as the translating method, and the language of MCDR as the fallback
 translation language
 
@@ -519,11 +519,10 @@ def language_context(cls, language: str)
 Create a context where all `RTextMCDRTranslation` will use the given
 language to translate within this context
 
-It\'s mostly used when you want a translated str or Minecraft json text
+It's mostly used when you want a translated str or Minecraft json text
 object corresponding to this component under a specific language
 
-MCDR will automatically apply this context with [user\'s preferred
-language](../preference.html#language) right before sending messages to
+MCDR will automatically apply this context with [user's preferred language](../preference.md#language) right before sending messages to
 a player or the console
 
 Example:
@@ -540,9 +539,9 @@ def log_message_line_by_line(server: ServerInterface):
 
 ## types
 
-Who doesn\'t want a complete type checking to help you reduce silly
+Who doesn't want a complete type checking to help you reduce silly
 mistakes etc. when coding your plugin? If you want to add type hints to
-the server interface or command source parameter, here\'s the package
+the server interface or command source parameter, here's the package
 for you to import those Usually-used classes
 
 ``` python
@@ -562,7 +561,7 @@ Some useful kits
 A abstract class for easy serializing / deserializing
 
 Inherit it and declare the fields of your class with type annotations,
-that\'s all you need to do
+that's all you need to do
 
 ``` python
 class MyData(Serializable):

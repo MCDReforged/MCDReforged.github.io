@@ -7,7 +7,7 @@ by the complicated argument conditions? Go try the MCDR command building
 system!
 
 MCDR contains a command tree building system for plugins to build their
-commands. It behaves like a lite version of Mojang\'s
+commands. It behaves like a lite version of Mojang's
 [brigadier](https://github.com/Mojang/brigadier)
 
 ## Workflow
@@ -31,8 +31,8 @@ command source
 
 ## A Quick Peek
 
-Let\'s peek into the actual operation of a command tree. As an example,
-let\'s say that there are 3 kinds of commands:
+Let's peek into the actual operation of a command tree. As an example,
+let's say that there are 3 kinds of commands:
 
 -   `!!email list`
 -   `!!email remove <email_id>`
@@ -57,7 +57,7 @@ will happen
 1.  Parsing at node `Literal('!!email')` with command
     `!!email remove 21`
     1.  Literal Node `Literal('!!email')` gets the first element of
-        `!!email remove 21`, it\'s `!!email` and it matches the literal
+        `!!email remove 21`, it's `!!email` and it matches the literal
         node
     2.  Now the remaining command is `remove 21`
     3.  And then, it searches through its literal children, found the
@@ -66,15 +66,15 @@ will happen
     4.  Then it let that child node to handle the rest of the command
 2.  Parsing at node `Literal('remove')` with command `remove 21`
     1.  Literal Node `Literal('remove')` gets the first element of
-        `remove 21`, it\'s `remove` and it matches the literal node
+        `remove 21`, it's `remove` and it matches the literal node
     2.  Now the remaining command is `21`
-    3.  And then it searches through its literal children, but doesn\'t
+    3.  And then it searches through its literal children, but doesn't
         found any literal child matches the next element `21`
     4.  So it let its non-literal child `Integer('email_id')` to handle
         the rest of the command
 3.  Parsing at node `Integer('email_id')` with command `21`
     1.  Integer Node `Integer('email_id')` gets the first element of
-        `21`, it\'s a legal integer
+        `21`, it's a legal integer
     2.  It store the value `21` to the context dict with key `email_id`
     3.  And then it finds that the command parsing is already finished
         so it invokes the callback function with the command source and
@@ -82,7 +82,7 @@ will happen
     4.  The command parsing finishes
 
 This is a quick overview of the implantation logic part of command
-building system. It\'s mainly for help you build a perceptual
+building system. It's mainly for help you build a perceptual
 understanding of the command tree based command building system
 
 Matching the literal nodes, parsing the remaining command, storing the
@@ -97,7 +97,7 @@ can find the command building code of `!!MCDR` command in the
 
 ## Context
 
-Context stores the information of current command parsing. It\'s a class
+Context stores the information of current command parsing. It's a class
 inherited from dict
 
 Parsed values are stored inside context using the dict method, which
@@ -109,7 +109,7 @@ A list of MCDR built-in command nodes and their usage
 
 ### AbstractNode
 
-Abstract Node is base class of all command nodes. It\'s also a abstract
+Abstract Node is base class of all command nodes. It's also a abstract
 class. It provides several methods for building up the command tree
 
 #### then
@@ -120,9 +120,9 @@ def then(self, node: AbstractNode) -> AbstractNode
 
 Attach a child node to its children list, and then return itself
 
-It\'s used for building the command tree structure
+It's used for building the command tree structure
 
-Parameter *node*: A node instance to be added to current node\'s
+Parameter *node*: A node instance to be added to current node's
 children list
 
 The command tree in the [Quick Peek](#a-quick-peek) section can be built
@@ -211,7 +211,7 @@ Parameter *requirement*: A callable that accepts up to 2 arguments and
 returns a bool. Argument list: `CommandSource`, `dict` (context)
 
 Parameter *failure_message_getter*: An optional callable that accepts up
-to 2 arguments and returns a str or a [RTextBase](api.html#rtext).
+to 2 arguments and returns a str or a [RTextBase](api.md#rtext).
 Argument list: `CommandSource`, `dict` (context)
 
 Some Example usages:
@@ -253,15 +253,15 @@ Command starts at *root_executor*
 
 These commands:
 
--   \"foo a long way to the command x\"
--   \"foo a long way to the command y\"
--   \"foo a long way to the command z\"
+-   "foo a long way to the command x"
+-   "foo a long way to the command y"
+-   "foo a long way to the command z"
 
 are the same to
 
--   \"foo quick x\"
--   \"foo quick y\"
--   \"foo quick z\"
+-   "foo quick x"
+-   "foo quick y"
+-   "foo quick z"
 
 Pay attention to the difference between `redirects` and `then`.
 `redirects` is to redirect the child nodes, and `then` is to add a child
@@ -325,7 +325,7 @@ Keyword Parameter *handled*: If handled is set to True,
 callback
 
 For uses about `error.set_handled()`, check the
-[CommandError](classes/CommandError.html#set-handled) class reference
+[CommandError](classes/CommandError.md#set-handled) class reference
 
 #### on_child_error
 
@@ -334,12 +334,12 @@ def on_child_error(self, error_type: Type[CommandError], handler: Union[Callable
 ```
 
 Similar to [on_error](#on_error), but it gets triggered only when the
-node receives a command error from one of the node\'s direct or indirect
+node receives a command error from one of the node's direct or indirect
 child
 
 ### Literal
 
-Literal node is a special node. It doesn\'t output any value. It\'s more
+Literal node is a special node. It doesn't output any value. It's more
 like a command branch carrier
 
 Literal node can accept a str as its literal in its constructor. A
@@ -369,14 +369,14 @@ parsed value in context
 
 ### NumberNode
 
-It\'s an abstract class. It\'s inherited by `Number`, `Integer` and
+It's an abstract class. It's inherited by `Number`, `Integer` and
 `Float`. It represents a type of number based node
 
 For a `NumberNode` instance, you can restrict the range of the number
 argument. If the parsed number is out of range, a `NumberOutOfRange`
 exception will be risen
 
-By default there\'s no range restriction
+By default there's no range restriction
 
 #### at_min
 
@@ -422,14 +422,14 @@ next element is not a float, a `InvalidFloat` exception will be risen
 
 ### TextNode
 
-It\'s an abstract class. It\'s inherited by `Text`, `QuotableText` and
+It's an abstract class. It's inherited by `Text`, `QuotableText` and
 `GreedyText`. It represents a type of text based node
 
 For a `TextNode` instance, you can restrict the length range of the str
 text argument. If the length of the parsed text is out of range, a
 `TextLengthOutOfRange` exception will be risen
 
-By default there\'s no length range restriction
+By default there's no length range restriction
 
 #### at_min_length
 
@@ -469,21 +469,21 @@ user a way to input text with space character: Use two double quotes to
 enclose the text content
 
 If you use two double quotes to enclose the text content, You can use
-escape character `\` to escape double quotes `"` and escape character
-`\` itself
+escape character `` to escape double quotes `"` and escape character
+`` itself
 
 For example, here are some texts that accepted by `QuotableText`:
 
 -   `Something`
 -   `"Someting with space characters"`
--   `"or escapes \\ like \" this"`
+-   `"or escapes \\ like " this"`
 
 ### GreedyText
 
 The principle of `GreedyText` is quite simple: It greedily take out all
 remaining texts in the commands
 
-It\'s not a smart decision to append any child nodes to a `GreedyText`,
+It's not a smart decision to append any child nodes to a `GreedyText`,
 since the child nodes can never get any remaining command
 
 ### Boolean
@@ -524,7 +524,7 @@ root = Literal('test').then(Enumeration('arg').runs(callback))
   Input         Output
   ------------- ----------------------------------
   test blue     You chose blue color
-  test yellow   Invalid enumeration: yellow\<\--
+  test yellow   Invalid enumeration: yellow<\--
 
 ## Customize
 
@@ -533,14 +533,14 @@ repeated work on building your command
 
 To create a custom a argument node, you need to declare a class
 inherited from `AbstractNode`, and then implement the `parse` method
-logic. That\'s it, the custom node class is ready to be used
+logic. That's it, the custom node class is ready to be used
 
 Custom exception provides a precise way to handle your exception with
 `on_error` method. If you want to raise a custom exception when your
 argument node fails to parsing the text, you need to have the custom
 exception inherited from `CommandSyntaxError`
 
-Here\'s a quick example of a custom Argument node, `PointArgument`. It
+Here's a quick example of a custom Argument node, `PointArgument`. It
 accepts continuous 3 float input as a coordinate and batch them in to a
 list as a point. It raises `IllegalPoint` if it gets a non-float input,
 or `IncompletePoint` if the command ends before it finishes reading 3
@@ -572,7 +572,7 @@ class PointArgument(ArgumentNode):
         return ParseResult(coords, total_read)
 ```
 
-For its usage, here\'s a simple example as well as an input/output
+For its usage, here's a simple example as well as an input/output
 table:
 
 ``` python
@@ -588,6 +588,6 @@ def on_load(server, prev):
   Input             Output
   ----------------- ----------------------------------------
   !!mypoint 1 2 3   You have input a point (1.0, 2.0, 3.0)
-  !!mypoint 1 2     Incomplete Point: !!mypoint 1 2\<\--
-  !!mypoint xxx     Invalid Point: !!mypoint xxx\<\--
-  !!mypoint 1 2 x   Invalid Point: !!mypoint 1 2 x\<\--
+  !!mypoint 1 2     Incomplete Point: !!mypoint 1 2<\--
+  !!mypoint xxx     Invalid Point: !!mypoint xxx<\--
+  !!mypoint 1 2 x   Invalid Point: !!mypoint 1 2 x<\--

@@ -60,7 +60,7 @@ Example:
 ]
 ```
 
-Type: List\[str or dict\]
+Type: List[str or dict]
 
 #### repository
 
@@ -110,7 +110,7 @@ Optional field, default: `[]`
 
 A list of id of [label](#Label) of your plugin. Choose them wisely
 
-Type: List\[str\]
+Type: List[str]
 
 #### introduction
 
@@ -121,7 +121,7 @@ to user when they are browsing your plugin. Comparing to readme or
 document, introduction focuses more on showing the features of the
 plugin to attract new users
 
-For the `introduction` field, it\'s a mapping maps [language](#language)
+For the `introduction` field, it's a mapping maps [language](#language)
 into a file path
 
 The key is the language
@@ -140,10 +140,10 @@ section](#related-path):
 }
 ```
 
-Alternatively you can don\'t declare this field but put your
+Alternatively you can don't declare this field but put your
 introduction file inside the same directory where `plugin_info.json` is
 
-It\'s named by `introduction.md` for default language `en_us` and named
+It's named by `introduction.md` for default language `en_us` and named
 by e.g. `introduction-zh_cn.md` for other language
 
 ``` 
@@ -154,7 +154,7 @@ plugins/
      └─ introduction-zh_cn.md
 ```
 
-Type: Dict\[str, str\]
+Type: Dict[str, str]
 
 ## Label
 
@@ -199,8 +199,7 @@ the release follows the following restrictions:
 -   Assets: contains 1 asset with `.mcdr` or `.pyz` file extension name.
     Other assets will be ignored
 
-    Which also means only [Packed
-    Plugin](plugin_format.html#packed-plugin) is supported
+    Which also means only [Packed Plugin](plugin_format.md#packed-plugin) is supported
 
 ## Submit Plugin
 
@@ -208,7 +207,7 @@ If you want to submit your plugin, create the directory of your plugin
 inside the `plugins/` directory with necessary files, and make a pull
 request
 
-It\'s recommended to leave your github link in the [authors](#authors)
+It's recommended to leave your github link in the [authors](#authors)
 field so repository maintainers can simply tell if you are the owner of
 the plugin
 

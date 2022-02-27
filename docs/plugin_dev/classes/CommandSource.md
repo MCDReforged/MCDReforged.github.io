@@ -64,7 +64,7 @@ def get_info(self) -> Info
 
 Return the Info instance that this command source is created from
 
-It\'s only available in command source originated from an info created
+It's only available in command source originated from an info created
 by MCDR
 
 ### get_permission_level
@@ -84,7 +84,7 @@ def get_preference(self) -> PreferenceItem
 
 Return the preference of the command source
 
-See [get_preference](ServerInterface.html#get-preference) for related
+See [get_preference](ServerInterface.md#get-preference) for related
 information
 
 ### preferred_language_context
@@ -97,7 +97,7 @@ def preferred_language_context(self)
 A quick helper method to use the language value in preference to create
 a context with `RTextMCDRTranslation.language_context`
 
-See [RTextMCDRTranslation](../api.html#rtextmcdrtranslation) for related
+See [RTextMCDRTranslation](../api.md#rtextmcdrtranslation) for related
 information
 
 Example usage:
@@ -136,9 +136,9 @@ def reply(self, message: Any, **kwargs) -> None
 Send a message to the command source. The message can be anything
 including RTexts
 
-The message will be converted to str using `str()` function unless it\'s
+The message will be converted to str using `str()` function unless it's
 a RTextBase object
 
-Keyword Parameter *encoding*: The encoding method for the text. It\'s
+Keyword Parameter *encoding*: The encoding method for the text. It's
 only used in PlayerCommandSource to optionally specify the encoding
-method. Check [here](ServerInterface.html#execute) for more details
+method. Check [here](ServerInterface.md#execute) for more details

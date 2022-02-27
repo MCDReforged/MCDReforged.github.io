@@ -16,16 +16,16 @@ to the priority
 
 ## Register a event listener
 
-See the [Event listeners](basic.html#event-listeners) section in Plugin
-Registry in the document of [MCDR Plugin](basic.html)
+See the [Event listeners](basic.md#event-listeners) section in Plugin
+Registry in the document of [MCDR Plugin](basic.md)
 
 ## MCDR Event
 
 ### Default Event Listener
 
-All of the MCDR events have an attribute called \"Default function
-name\". If your plugin declare a function in the global slope of the
-plugin file, with the same name to the \"Default function name\", the
+All of the MCDR events have an attribute called "Default function
+name". If your plugin declare a function in the global slope of the
+plugin file, with the same name to the "Default function name", the
 function will be automatically registered as a listener to the specific
 event.
 
@@ -37,11 +37,11 @@ The priority of these event listeners are always the default priority
 To help understand, some MCDR events can be sorted into 3 lifecycle
 flows:
 
--   Plugin lifecycle: [Plugin loaded](#plugin-loaded) -\> [Plugin
+-   Plugin lifecycle: [Plugin loaded](#plugin-loaded) -> [Plugin
     unloaded](#plugin-unloaded)
--   Server lifecycle: [Server start](#server-start) -\> [Server
-    startup](#server-startup) -\> [Server stop](#server-stop)
--   MCDR lifecycle: [MCDR start](#mcdr-start) -\> [MCDR
+-   Server lifecycle: [Server start](#server-start) -> [Server
+    startup](#server-startup) -> [Server stop](#server-stop)
+-   MCDR lifecycle: [MCDR start](#mcdr-start) -> [MCDR
     stop](#mcdr-stop)
 
 #### Plugin Loaded
@@ -57,10 +57,10 @@ def on_load(server: PluginServerInterface, prev_module):
     server.register_help_message(...)
 ```
 
-If it\'s a plugin reload, `prev_module` argument indicates the previous
-plugin instance module, otherwise if it\'s the first time to load the
+If it's a plugin reload, `prev_module` argument indicates the previous
+plugin instance module, otherwise if it's the first time to load the
 plugin, prev_module is None. With this parameter plugin can easily
-inherit information from the previous plugin instance. Here\'s an
+inherit information from the previous plugin instance. Here's an
 example:
 
 ``` python
@@ -72,7 +72,7 @@ def on_load(server: PluginServerInterface, prev_module):
         reload_counter = 0
 ```
 
-Since it\'s the first event in the lifecycle of a plugin, this event can
+Since it's the first event in the lifecycle of a plugin, this event can
 only be registered with default event listener, so the `on_load`
 function is the entry spot of your plugin
 
@@ -89,7 +89,7 @@ initialized yet
 This event gets dispatched when MCDR unload the plugin instance. It can
 be caused by a plugin reload or a plugin unload
 
-Also, this event will be dispatched during MCDR stopping, so it\'s a
+Also, this event will be dispatched during MCDR stopping, so it's a
 good place for you to do some cleanup
 
 -   Event id: mcdr.plugin_unloaded
@@ -100,10 +100,10 @@ good place for you to do some cleanup
 
 A new line of text is output from the stdout of the server, or a text is
 input from the console. MCDR has already parsed the text into an
-[Info](classes/Info.html) object. In this event plugin can response to
+[Info](classes/Info.md) object. In this event plugin can response to
 the info
 
-Here\'s an example
+Here's an example
 
 ``` python
 def on_info(server: PluginServerInterface, info: Info):
@@ -123,7 +123,7 @@ triggered when the info is sent by a user, more precisely,
 
 If you want a simple way to handle user input, you can use this event
 
-Here\'s an example
+Here's an example
 
 ``` python
 def on_user_info(server: PluginServerInterface, info: Info):
@@ -134,8 +134,7 @@ def on_user_info(server: PluginServerInterface, info: Info):
 
 If you want to have a not-simple command system, rather than parsing
 them manually in User Info event, I will suggest you to register a
-command tree for you plugin. See the [command
-registering](basic.html#command) doc
+command tree for you plugin. See the [command registering](basic.md#command) doc
 
 -   Event id: mcdr.user_info
 -   Callback arguments: PluginServerInterface, Info
@@ -232,9 +231,9 @@ objects
 Besides MCDR itself, plugins can also dispatch its own event. All you
 need to do is invoking `server.dispatch_event` api with the event and
 some arguments. Check
-[here](classes/ServerInterface.html#dispatch-event) for more details of
+[here](classes/ServerInterface.md#dispatch-event) for more details of
 the api
 
 Customizing event is a good way to broadcast a message between plugins.
-It\'s also a good indirectly way for your plugin to react to requests
+It's also a good indirectly way for your plugin to react to requests
 from other plugins

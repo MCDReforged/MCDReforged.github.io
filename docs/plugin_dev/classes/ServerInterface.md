@@ -4,11 +4,11 @@ title: ServerInterface
 
 ServerInterface is the interface with lots of API for plugins to
 interact with the server. Its sub-class
-[PluginServerInterface](PluginServerInterface.html) contains extra APIs
+[PluginServerInterface](PluginServerInterface.md) contains extra APIs
 for plugins to control the plugin itself
 
 The first argument in all plugin events is always the
-PluginServerInterface. It\'s recommend to use `server` as the parameter
+PluginServerInterface. It's recommend to use `server` as the parameter
 name of the ServerInterface argument which is widely used in this
 document
 
@@ -49,13 +49,13 @@ def tr(self, translation_key: str, *args, language: Optional[str] = None, **kwar
 Return a translated text corresponded to the translation key and format
 the text with given args and kwargs
 
-If args or kwargs contains [RText](../api.html#rtext) element, then the
+If args or kwargs contains [RText](../api.md#rtext) element, then the
 result will be a RText, otherwise the result will be a regular str
 
 If the translation key is not recognized, the return value will be the
 translation key itself
 
-See [here](../basic.html#translation) for the ways to register
+See [here](../basic.md#translation) for the ways to register
 translations for your plugin
 
 Parameter *translation_key*: The key of the translation
@@ -74,11 +74,11 @@ def rtr(self, translation_key: str, *args, **kwargs) -> RTextMCDRTranslation
 ```
 
 Return a RText derived component
-[RTextMCDRTranslation](../api.html#rtextmcdrtranslation), that only
+[RTextMCDRTranslation](../api.md#rtextmcdrtranslation), that only
 translates itself right before displaying or serializing
 
 Using this method instead of [tr()](#tr) allows you to display your
-texts in [user\'s preferred language](../../preference.html#language)
+texts in [user's preferred language](../../preference.md#language)
 automatically
 
 Of course you can construct `RTextMCDRTranslation` yourself instead of
@@ -99,7 +99,7 @@ def as_basic_server_interface(self) -> ServerInterface
 Return a ServerInterface instance. The type of the return value is
 exactly the ServerInterface
 
-It\'s used for removing the plugin information inside
+It's used for removing the plugin information inside
 PluginServerInterface when you need to send a ServerInterface
 
 #### as_plugin_server_interface
@@ -206,7 +206,7 @@ Return if the server has started up
 def is_rcon_running(self) -> bool
 ```
 
-Return if MCDR\'s rcon is running
+Return if MCDR's rcon is running
 
 #### get_server_pid
 
@@ -246,7 +246,7 @@ information has not been parsed
 def execute(self, text: str, *, encoding: Optional[str] = None) -> None
 ```
 
-Execute a command by sending the command content to server\'s standard
+Execute a command by sending the command content to server's standard
 input stream
 
 Parameter *text*: The content of the command you want to send
@@ -313,7 +313,7 @@ Parameter *info*: the Info you want to reply to
 
 Parameter *text*: the message you want to send
 
-Keyword Parameter *console_text*: If it\'s specified, console_text will
+Keyword Parameter *console_text*: If it's specified, console_text will
 be used instead of text when replying to console
 
 Keyword Parameter *encoding*: The encoding method for the text
@@ -327,7 +327,7 @@ def get_plugin_metadata(self, plugin_id: str) -> Optional[Metadata]
 ```
 
 Return the metadata of the specified plugin, or None if the plugin
-doesn\'t exist
+doesn't exist
 
 Parameter *plugin_id*: The plugin id of the plugin to query metadata
 
@@ -338,7 +338,7 @@ def get_plugin_file_path(self, plugin_id: str) -> Optional[str]
 ```
 
 Return the file path of the specified plugin, or None if the plugin
-doesn\'t exist
+doesn't exist
 
 Parameter *plugin_id*: The plugin id of the plugin to query file path
 
@@ -348,13 +348,12 @@ Parameter *plugin_id*: The plugin id of the plugin to query file path
 def get_plugin_instance(self, plugin_id: str) -> Optional[Any]
 ```
 
-Return the [entrypoint](../basic.html#entrypoint) module instance of the
-specific plugin, or None if the plugin doesn\'t exist
+Return the [entrypoint](../basic.md#entrypoint) module instance of the
+specific plugin, or None if the plugin doesn't exist
 
-If the target plugin is a [solo
-plugin](../plugin_format.html#solo-plugin) and it needs to react to
-events from MCDR, it\'s quite important to use this instead of manually
-import the plugin you want, since it\'s the only way to make your plugin
+If the target plugin is a [solo plugin](../plugin_format.md#solo-plugin) and it needs to react to
+events from MCDR, it's quite important to use this instead of manually
+import the plugin you want, since it's the only way to make your plugin
 be able to access the same plugin instance to MCDR
 
 Parameter *plugin_id*: The plugin id of the plugin you want
@@ -435,7 +434,7 @@ Enable an unloaded plugin from the given path. Return if the plugin gets
 enabled successfully
 
 Parameter *plugin_file_path*: The file path of the plugin to enable.
-Example: \"plugins/my_plugin.py.disabled\"
+Example: "plugins/my_plugin.py.disabled"
 
 #### reload_plugin
 
@@ -447,7 +446,7 @@ Reload a plugin specified by plugin id. Return a bool indicating if the
 plugin gets reloaded successfully, or None if plugin not found
 
 Parameter *plugin_id*: The id of the plugin to reload. Example:
-\"my_plugin\"
+"my_plugin"
 
 #### unload_plugin
 
@@ -459,7 +458,7 @@ Unload a plugin specified by plugin id. Return a bool indicating if the
 plugin gets unloaded successfully, or None if plugin not found
 
 Parameter *plugin_id*: The id of the plugin to unload. Example:
-\"my_plugin\"
+"my_plugin"
 
 #### disable_plugin
 
@@ -471,7 +470,7 @@ Disable a plugin specified by plugin id. Return a bool indicating if the
 plugin gets disabled successfully, or None if plugin not found
 
 Parameter *plugin_id*: The id of the plugin to disable. Example:
-\"my_plugin\"
+"my_plugin"
 
 #### refresh_all_plugins
 
@@ -499,8 +498,8 @@ def dispatch_event(self, event: PluginEvent, args: Tuple[Any, ...]) -> None
 
 Dispatch an event to all loaded plugins
 
-The event will be immediately dispatch if it\'s on the task executor
-thread, or gets enqueued if it\'s on other thread
+The event will be immediately dispatch if it's on the task executor
+thread, or gets enqueued if it's on other thread
 
 Parameter *event*: The event to dispatch. It need to be a `PluginEvent`
 instance. For simple usage, you can create a `LiteralEvent` instance for
@@ -511,7 +510,7 @@ listeners. An ServerInterface instance will be automatically added to
 the beginning of the argument list
 
 Parameter *on_executor_thread*: By default the event will be dispatched
-in a new task in task executor thread. If it\'s set to false. The event
+in a new task in task executor thread. If it's set to false. The event
 will be dispatched immediately
 
 **Note**: You cannot dispatch an event with the same event id to any
@@ -559,14 +558,14 @@ def set_permission_level(self, player: str, value: Union[int, str]) -> None
 ```
 
 Set the permission level of the given player. It raises `TypeError` if
-the value parameter doesn\'t proper represent a permission level
+the value parameter doesn't proper represent a permission level
 
 Parameter *player*: The name of the player that you want to set his/her
 permission level
 
 Parameter *value*: The target permission level you want to set the
-player to. It can be an int or a str as long as it\'s related to the
-permission level. Available examples: 1, \'1\', \'user\'
+player to. It can be an int or a str as long as it's related to the
+permission level. Available examples: 1, '1', 'user'
 
 ### Command
 
@@ -578,7 +577,7 @@ get_plugin_command_source(self) -> PluginCommandSource
 
 Return a simple plugin command source for e.g. command execution
 
-It\'s not player or console, it has maximum permission level, it use
+It's not player or console, it has maximum permission level, it use
 [logger](#logger) for replying
 
 #### execute_command
@@ -592,7 +591,7 @@ Execute a single command using the command system of MCDR
 Parameter *command*: The command you want to execute
 
 Parameter *source*: The command source that is used to execute the
-command. If it\'s not specified MCDR will use
+command. If it's not specified MCDR will use
 [get_plugin_command_source](#get-plugin-command-source) as fallback
 command source
 
