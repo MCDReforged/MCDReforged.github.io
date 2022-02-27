@@ -39,7 +39,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/MCDReforged/MCDReforged.github.io/',
+          editUrl: 'https://github.com/MCDReforged/MCDReforged.github.io/tree/main/',
         },
         blog: false,
         theme: {
@@ -124,8 +124,8 @@ module.exports = {
             title: 'More',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/Fallen-Breath/MCDReforged',
+                label: 'Docs Repo',
+                href: 'https://github.com/MCDReforged/MCDReforged.github.io',
               },
             ],
           },
