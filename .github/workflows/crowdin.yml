@@ -9,17 +9,12 @@ jobs:
   trigger:
     name: Trigger Webhooks
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        webhook_url:
-          - ${{ secrets.WEBHOOK_URL_VERCEL }}
-          - ${{ secrets.WEBHOOK_URL_NETLIFY }}
-          - ${{ secrets.WEBHOOK_URL_CLOUDFLARE }}
     steps:
       - name: Trigger Webhook use cURL
-        env:
-          WEBHOOK_URL: ${{ matrix.webhook_url }}
-        run: curl -X POST ${{ env.WEBHOOK_URL }}
+        run: |
+          curl -X POST ${{ secrets.WEBHOOK_URL_VERCEL }}
+          curl -X POST ${{ secrets.WEBHOOK_URL_NETLIFY }}
+          curl -X POST ${{ secrets.WEBHOOK_URL_CLOUDFLARE }}
 
   build:
     name: Pull Translations and Build Site
