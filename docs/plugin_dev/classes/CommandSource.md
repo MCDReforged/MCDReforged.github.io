@@ -2,12 +2,11 @@
 title: CommandSource
 ---
 
-CommandSource is an abstracted command executor model. It provides
-several methods for command execution
+`CommandSource` is an abstracted command executor model. It provides several methods for command execution
 
 Class inheriting tree:
 
-``` 
+``` text
 CommandSource
  ├─ InfoCommandSource
  │   ├─ PlayerCommandSource
@@ -15,8 +14,7 @@ CommandSource
  └─ PluginCommandSource
 ```
 
-Plugins can declare a class inherited from `CommandSource` to create
-their own command source
+Plugins can declare a class inherited from `CommandSource` to create their own command source
 
 ## Property
 
@@ -26,7 +24,7 @@ An `@property` decorated method
 
 If the command source is a player command source
 
-Type: bool
+Type: `bool`
 
 ### is_console
 
@@ -34,15 +32,15 @@ An `@property` decorated method
 
 If the command source is a console command source
 
-Type: bool
+Type: `bool`
 
 ### player
 
-**Only in PlayerCommandSource**
+> Only in `PlayerCommandSource`
 
 The name of the player
 
-Type: str
+Type: `str`
 
 ## Method
 
@@ -60,12 +58,11 @@ Return the server interface instance
 def get_info(self) -> Info
 ```
 
-**Only in InfoCommandSource**
+> Only in `InfoCommandSource`
 
 Return the Info instance that this command source is created from
 
-It's only available in command source originated from an info created
-by MCDR
+It's only available in command source originated from an info created by MCDR
 
 ### get_permission_level
 
@@ -73,8 +70,7 @@ by MCDR
 def get_permission_level(self) -> int
 ```
 
-Return the permission level representing by an int that the command
-source has
+Return the permission level representing by an int that the command source has
 
 ### get_preference
 
@@ -84,8 +80,7 @@ def get_preference(self) -> PreferenceItem
 
 Return the preference of the command source
 
-See [get_preference](ServerInterface.md#get-preference) for related
-information
+See [`get_preference`](ServerInterface.md#get-preference) for related information
 
 ### preferred_language_context
 
@@ -94,10 +89,9 @@ information
 def preferred_language_context(self)
 ```
 
-A quick helper method to use the language value in preference to create
-a context with `RTextMCDRTranslation.language_context`
+A quick helper method to use the language value in preference to create a context with `RTextMCDRTranslation.language_context`
 
-See [RTextMCDRTranslation](../api.md#rtextmcdrtranslation) for related
+See [`RTextMCDRTranslation`](../api.md#rtextmcdrtranslation) for related
 information
 
 Example usage:
@@ -114,8 +108,7 @@ def has_permission(self, level: int) -> bool:
     return self.get_permission_level() >= level
 ```
 
-Return if the command source has not less level than the given
-permission level
+Return if the command source has not less level than the given permission level
 
 ### has_permission_higher_than
 
@@ -124,8 +117,7 @@ def has_permission_higher_than(self, level: int) -> bool:
     return self.get_permission_level() > level
 ```
 
-Just like the [has_permission](#has-permission), but this time it is a
-greater than judgment
+Just like the [has_permission](#has-permission), but this time it is a greater than judgment
 
 ### reply
 
@@ -133,12 +125,8 @@ greater than judgment
 def reply(self, message: Any, **kwargs) -> None
 ```
 
-Send a message to the command source. The message can be anything
-including RTexts
+Send a message to the command source. The message can be anything including RTexts
 
-The message will be converted to str using `str()` function unless it's
-a RTextBase object
+The message will be converted to str using `str()` function unless it's a RTextBase object
 
-Keyword Parameter *encoding*: The encoding method for the text. It's
-only used in PlayerCommandSource to optionally specify the encoding
-method. Check [here](ServerInterface.md#execute) for more details
+- Keyword Parameter *`encoding`*: The encoding method for the text. It's only used in `PlayerCommandSource` to optionally specify the encoding method. Check [here](ServerInterface.md#execute) for more details

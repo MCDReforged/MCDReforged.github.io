@@ -2,31 +2,29 @@
 title: Command Line Interface
 ---
 
-MCDR also provides some useful tool kits via command line interface
-(CLI). The usage is simple: Add some arguments at the end of the command
-you launch MCDR
+MCDR also provides some useful tool kits via command line interface (CLI). The usage is simple: Add some arguments at the end of the command you launch MCDR
 
 Have a try to display CLI help messages using following command
 
-``` 
+``` bash
 python -m mcdreforged -h
 ```
 
 The CLI command format is:
 
-``` 
+``` bash
 mcdreforged [global args] <sub_command> [sub_command args]
 ```
 
 ## Global Arguments
 
--   `-q`, `--quiet`: Disable CLI output
+- `-q`, `--quiet`: Disable CLI output
 
 ## Sub Commands
 
 ### start
 
-``` 
+``` bash
 python -m mcdreforged start [-h]
 ```
 
@@ -34,54 +32,47 @@ The same as `python -m mcdreforged`, it launches MCDR
 
 ### init
 
-``` 
+``` bash
 python -m mcdreforged init [-h]
 ```
 
 Prepare the working environment of MCDR
 
-Create commonly used folders and generate default configure and
-permission files, including:
+Create commonly used folders and generate default configure and permission files, including:
 
--   logs/
--   configs/
--   plugins/
--   server/
--   config.yml
--   permission.yml
+- logs/
+- configs/
+- plugins/
+- server/
+- config.yml
+- permission.yml
 
 ### gendefault
 
-``` 
+``` bash
 python -m mcdreforged gendefault [-h]
 ```
 
-Generate default configure and permission files at current working
-directory
+Generate default configure and permission files at current working directory
 
 Note that it will overwrite existing files
 
 ### pack
 
-``` 
+``` bash
 python -m mcdreforged pack [-h] [-i INPUT] [-o OUTPUT] [-n NAME]
 ```
 
-Pack up your plugin source codes / resources files, from a batch of
-files, to a `.mcdr` packed plugin file
+Pack up your plugin source codes / resources files, from a batch of files, to a `.mcdr` packed plugin file
 
-The packing is based on the `mcdreforged.plugin.json` metadata file in
-the input directory. It will pack and only pack the following
-files/folders into the packed plugin:
+The packing is based on the `mcdreforged.plugin.json` metadata file in the input directory. It will pack and only pack the following files/folders into the packed plugin:
 
--   Folder named by the plugin id
--   File `mcdreforged.plugin.json`
--   File `requirements.txt`, if it exists
--   Files or folders listed in the [resources](metadata.md#resources)
-    field in metadata
+- Folder named by the plugin id
+- File `mcdreforged.plugin.json`
+- File `requirements.txt`, if it exists
+- Files or folders listed in the [resources](metadata.md#resources) field in metadata
 
-During plugin packing, all directory with name `__pycache__` will be
-ignored
+During plugin packing, all directory with name `__pycache__` will be ignored
 
 #### input
 
@@ -91,7 +82,7 @@ ignored
 >
 > For example, if you have following file structure
 >
-> ``` 
+> ``` text
 > work_place/
 >    my_plugin/
 >        __init__.py
@@ -118,27 +109,19 @@ ignored
 >
 > A specific name for the output packed plugin file
 >
-> If not given it will use the
-> [archive_name](metadata.md#archive-name) field in plugin metadata
+> If not given it will use the [archive_name](metadata.md#archive-name) field in plugin metadata
 >
 > If it's still not specific, A default name format will be used
 >
-> You can use formatter in your name string. String like `{arg_name}` in
-> name will be replaced automatically. Use `{{` or `}}` for single `{`
-> or `}`
+> You can use formatter in your name string. String like `{arg_name}` in name will be replaced automatically. Use `{{` or `}}` for single `{` or `}`
 >
-> -   `id`: The plugin id
-> -   `version`: The version of the plugin
+> - `id`: The plugin id
+> - `version`: The version of the plugin
 >
-> For example, with `id=my_plugin` and `version=1.2.3`, the following
-> formatting will happen
+> For example, with `id=my_plugin` and `version=1.2.3`, the following formatting will happen
 >
-> -   `MyCustomPlugin-release` -> `MyCustomPlugin-release`
-> -   `MyCustomPlugin-v{version}` -> `MyCustomPlugin-v1.2.3`
-> -   `{id}_{version}` -> `my_plugin_1.2.3`
+> - `MyCustomPlugin-release` -> `MyCustomPlugin-release`
+> - `MyCustomPlugin-v{version}` -> `MyCustomPlugin-v1.2.3`
+> - `{id}_{version}` -> `my_plugin_1.2.3`
 >
-> If file extension is included in the name and the file extension is a
-> valid [packed plugin](plugin_format.md#packed-plugin) extension
-> (`.mcdr` or `.pyz`), then the included file extension will be used.
-> Otherwise the default `.mcdr` file extension will be appended to the
-> end
+> If file extension is included in the name and the file extension is a valid [packed plugin](plugin_format.md#packed-plugin) extension (`.mcdr` or `.pyz`), then the included file extension will be used. Otherwise the default `.mcdr` file extension will be appended to the end
