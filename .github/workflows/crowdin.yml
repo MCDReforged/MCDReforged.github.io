@@ -3,7 +3,7 @@ name: pull-translation-from-crowdin
 on:
   workflow_dispatch:
   schedule:
-    - cron: 45 3,11,19 * * *
+    - cron: 11-45/14 19,1-9/8,10 * * *
 
 jobs:
   trigger:
