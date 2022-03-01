@@ -106,7 +106,7 @@ module.exports = {
             title: 'Docs',
             items: [
               {
-                label: 'Old Docs',
+                label: 'Legacy Docs',
                 href: 'https://MCDReforged.readthedocs.io',
               },
             ],
@@ -115,7 +115,7 @@ module.exports = {
             title: 'Community',
             items: [
               {
-                label: '开黑啦',
+                label: 'Kaiheila',
                 href: 'https://kaihei.co/ZiKh8f',
               },
             ],
