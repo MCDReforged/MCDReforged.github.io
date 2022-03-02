@@ -1,3 +1,5 @@
+name: push-to-crowdin
+
 on:
   push:
     branches:

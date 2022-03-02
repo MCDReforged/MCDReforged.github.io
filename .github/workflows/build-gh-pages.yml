@@ -1,4 +1,6 @@
 # May be removed
+name: build-gh-pages
+
 on: workflow_dispatch
 
 jobs:
