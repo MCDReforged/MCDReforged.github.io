@@ -1,0 +1,24 @@
+# May be removed
+on: workflow_dispatch
+
+jobs:
+  build:
+    name: Build and Deploy GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup environment
+        uses: ./.github/actions/yarn
+
+      - run: yarn crowdin:pull
+        env:
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+      - run: yarn build
+      - run: touch ./build/.nojekyll
+
+      - name: Deploy pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          force_orphan: true
