@@ -18,8 +18,8 @@ jobs:
 
   trigger:
     needs: crowdin
-    uses: ./.github/workflows/trigger-webhooks.yml
-
-  deploy:
-    needs: crowdin
-    uses: ./.github/workflows/deploy-gh-pages.yml
+    name: Trigger Webhook to Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger webhook use curl
+        run: curl -X POST ${{ secrets.WEBHOOK_URL }}
