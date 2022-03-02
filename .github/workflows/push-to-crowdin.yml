@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  crowdin:
+    name: Push Untranslated Documents to Crowdin
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup environment
+        uses: ./.github/actions/yarn
+
+      - run: yarn crowdin:push
+        env:
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+
+  trigger:
+    needs: crowdin
+    uses: ./.github/workflows/trigger-webhooks.yml
+
+  deploy:
+    needs: crowdin
+    uses: ./.github/workflows/deploy-gh-pages.yml

@@ -15,7 +15,7 @@
     "typecheck": "tsc",
     "crowdin": "crowdin",
     "crowdin:pull": "docusaurus write-translations && crowdin download",
-    "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download"
+    "crowdin:push": "docusaurus write-translations && crowdin upload"
   },
   "dependencies": {
     "@crowdin/cli": "3",
