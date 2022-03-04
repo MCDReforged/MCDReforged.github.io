@@ -1,5 +1,7 @@
 ---
 title: Plugin Format
+sidebar_position: 3
+toc_max_heading_level: 6
 ---
 
 There are 3 types of valid format of a MCDR plugin, each of them has its own advantages and disadvantages depending on the user cases

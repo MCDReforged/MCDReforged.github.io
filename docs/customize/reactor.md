@@ -1,5 +1,7 @@
 ---
 title: Info Reactor
+sidebar_position: 2
+toc_max_heading_level: 6
 ---
 
 Info reactors are the components to react to a parsed `Info` instance. MCDR uses reactors to trigger command parsing or dispatch plugin events

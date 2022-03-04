@@ -1,5 +1,7 @@
 ---
 title: Info
+sidebar_position: 3
+toc_max_heading_level: 6
 ---
 
 An Info instance contains the parsed result from the server or from the console

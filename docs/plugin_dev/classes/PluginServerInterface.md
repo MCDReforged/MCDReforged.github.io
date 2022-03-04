@@ -1,5 +1,6 @@
 ---
 title: PluginServerInterface
+sidebar_position: 2
 toc_max_heading_level: 6
 ---
 

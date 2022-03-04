@@ -1,5 +1,7 @@
 ---
 title: Command Line Interface
+sidebar_position: 8
+toc_max_heading_level: 6
 ---
 
 MCDR also provides some useful tool kits via command line interface (CLI). The usage is simple: Add some arguments at the end of the command you launch MCDR

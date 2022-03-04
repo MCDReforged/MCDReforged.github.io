@@ -1,5 +1,6 @@
 ---
 title: Configure
+sidebar_position: 2
 toc_max_heading_level: 6
 ---
 

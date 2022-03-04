@@ -1,5 +1,7 @@
 ---
 title: Class References
+sidebar_position: 0
+toc_max_heading_level: 6
 ---
 
 - [ServerInterface](ServerInterface.md)

@@ -1,5 +1,7 @@
 ---
 title: MCDR Plugin
+sidebar_position: 1
+toc_max_heading_level: 6
 ---
 
 ## What is a MCDR plugin

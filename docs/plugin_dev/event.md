@@ -1,5 +1,7 @@
 ---
 title: Plugin Event
+sidebar_position: 4
+toc_max_heading_level: 6
 ---
 
 Plugin events are the most important way for plugins to interact with the server and the console

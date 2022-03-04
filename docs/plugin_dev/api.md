@@ -1,5 +1,6 @@
 ---
 title: API Packages for Plugins
+sidebar_position: 6
 toc_max_heading_level: 6
 ---
 

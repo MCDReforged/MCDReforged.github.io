@@ -1,5 +1,6 @@
 ---
 title: Command Tree
+sidebar_position: 5
 toc_max_heading_level: 6
 ---
 

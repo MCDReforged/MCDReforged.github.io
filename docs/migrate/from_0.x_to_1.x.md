@@ -1,5 +1,7 @@
 ---
 title: From MCDR 0.x to 1.x
+sidebar_position: 1
+toc_max_heading_level: 6
 ---
 
 ## File structure

@@ -1,5 +1,7 @@
 ---
 title: Plugin Catalogue
+sidebar_position: 9
+toc_max_heading_level: 6
 ---
 
 The official MCDR plugin catalogue is the `master` branch of GitHub repository [MCDReforged/PluginCatalogue](https://github.com/MCDReforged/PluginCatalogue). Users can browse plugins here and developers can submit their plugins to the catalogue

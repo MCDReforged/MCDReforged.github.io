@@ -1,5 +1,7 @@
 ---
 title: Preference
+sidebar_position: 5
+toc_max_heading_level: 6
 ---
 
 A user-based preference setting of MCDR, available for players and console

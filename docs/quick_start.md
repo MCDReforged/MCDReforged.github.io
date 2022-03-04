@@ -1,5 +1,7 @@
 ---
 title: Quick Start
+sidebar_position: 1
+toc_max_heading_level: 6
 ---
 
 This is a quick start tutorial of [MCDReforged](https://github.com/Fallen-Breath/MCDReforged) (abbreviated as MCDR, omitted below).

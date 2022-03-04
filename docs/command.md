@@ -1,5 +1,7 @@
 ---
 title: Command
+sidebar_position: 3
+toc_max_heading_level: 6
 ---
 
 Command is the most common way for users to interact with MCDR. MCDR consider all console input and player chat messages from the server as user inputs. For them, MCDR will try to parse the input as a command

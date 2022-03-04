@@ -1,5 +1,7 @@
 ---
 title: From MCDR 1.x to 2.x
+sidebar_position: 2
+toc_max_heading_level: 6
 ---
 
 Migrating from MCDR 1.x to MCDR 2.x is easier than migrating from 0.x for most plugins. Some of the MCDR 1.x plugins can work as expected without any modification

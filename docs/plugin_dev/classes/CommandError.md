@@ -1,5 +1,7 @@
 ---
 title: CommandError
+sidebar_position: 5
+toc_max_heading_level: 6
 ---
 
 Sometimes when executing a command, the MCDR command parsing system might fail to parse the command for some reason. At that time if you have registered a error listener in the command tree node you will receive a `CommandError` instance. There are a few useful method of the `CommandError` instance for plugin developers

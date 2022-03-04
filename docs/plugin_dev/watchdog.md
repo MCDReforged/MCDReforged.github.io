@@ -1,5 +1,7 @@
 ---
 title: Watchdog
+sidebar_position: 7
+toc_max_heading_level: 6
 ---
 
 Watchdog is a daemon thread monitoring the task executor thread

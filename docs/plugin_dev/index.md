@@ -1,5 +1,7 @@
 ---
 title: Plugin Development
+sidebar_position: 0
+toc_max_heading_level: 6
 ---
 
 - [Basic](basic.md)

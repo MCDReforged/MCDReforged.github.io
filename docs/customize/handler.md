@@ -1,5 +1,7 @@
 ---
 title: Server Handler
+sidebar_position: 1
+toc_max_heading_level: 6
 ---
 
 Server handler is the object which parses server output and provides command interfaces to control the server.

@@ -1,5 +1,7 @@
 ---
 title: CommandSource
+sidebar_position: 4
+toc_max_heading_level: 6
 ---
 
 `CommandSource` is an abstracted command executor model. It provides several methods for command execution
