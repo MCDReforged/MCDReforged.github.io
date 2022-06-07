@@ -16,9 +16,9 @@ jobs:
         with:
           cache: yarn
       - run: yarn
-      - run: yarn crowdin:pull
-        env:
-          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+      # - run: yarn crowdin:pull
+      #   env:
+      #     CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
       - run: yarn build
 
       - name: Upload artifact

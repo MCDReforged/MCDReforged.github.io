@@ -14,9 +14,9 @@ jobs:
         with:
           cache: yarn
       - run: yarn
-      - run: yarn crowdin:push
-        env:
-          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+      # - run: yarn crowdin:push
+      #   env:
+      #     CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
 
   pages:
     needs: crowdin
