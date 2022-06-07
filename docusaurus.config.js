@@ -130,7 +130,7 @@ module.exports = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://github.com/Fallen-Breath" title="Fallen_Bread">Fallen_Breath</a>, Built with Docusaurus.`,
+        copyright: `Copyright &copy; ${new Date().getFullYear()} <a href="https://github.com/Fallen-Breath" title="Fallen_Bread">Fallen_Breath</a>, Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
