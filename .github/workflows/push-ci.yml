@@ -1,5 +1,4 @@
 name: push-to-crowdin
-
 on:
   push:
     branches:
@@ -10,18 +9,16 @@ jobs:
     name: Push Untranslated Documents to Crowdin
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup environment
-        uses: ./.github/actions/yarn
-
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: yarn
+      - run: yarn
       - run: yarn crowdin:push
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
 
-  trigger:
+  deploy:
     needs: crowdin
-    name: Trigger Webhook to Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger webhook use curl
-        run: curl -X POST ${{ secrets.WEBHOOK_URL }}
+    name: Build and Deploy GitHub Pages
+    uses: ./.github/workflows/github-pages.yml
