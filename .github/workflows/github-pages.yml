@@ -32,3 +32,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/deploy-pages@v1
+        with:
+          token: ${{ github.token }}
