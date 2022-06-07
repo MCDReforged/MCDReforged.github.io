@@ -1,4 +1,4 @@
-name: push-to-crowdin
+name: CI on Push
 on:
   push:
     branches:
@@ -18,7 +18,7 @@ jobs:
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
 
-  deploy:
+  pages:
     needs: crowdin
-    name: Build and Deploy GitHub Pages
+    name: GitHub Pages
     uses: ./.github/workflows/github-pages.yml

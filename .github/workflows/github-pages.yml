@@ -1,4 +1,4 @@
-name: Build and Deploy GitHub Pages
+name: GitHub Pages
 on:
   workflow_call:
   schedule:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build GitHub Pages
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
   
   deploy:
     needs: build
-    name: Deploy to GitHub Pages
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/deploy-pages@v1
