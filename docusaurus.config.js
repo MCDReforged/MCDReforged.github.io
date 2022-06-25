@@ -4,7 +4,6 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-/** @type {import('@docusaurus/types').Config} */
 module.exports = {
   title: 'MCDReforged',
   tagline: 'A rewritten version of MCDaemon, a python script to control your Minecraft server',
@@ -37,6 +36,7 @@ module.exports = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/MCDReforged/MCDReforged.github.io/tree/main/',
@@ -82,12 +82,12 @@ module.exports = {
           src: 'img/mcdreforged.png',
         },
         items: [
-          {
-            type: 'doc',
-            docId: 'index',
-            position: 'left',
-            label: 'Docs',
-          },
+          // {
+          //   type: 'doc',
+          //   docId: 'index',
+          //   position: 'left',
+          //   label: 'Docs',
+          // },
           {
             type: 'localeDropdown',
             position: 'right',
