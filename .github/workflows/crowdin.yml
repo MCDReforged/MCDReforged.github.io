@@ -1,8 +1,6 @@
-name: CI on Push
+name: Push Original Text to Crowdin
 on:
-  push:
-    branches:
-      - main
+  workflow_call:
 
 jobs:
   crowdin:
@@ -18,11 +16,6 @@ jobs:
           node-version: lts/*
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      # - run: pnpm run crowdin:push
+      # - run: pnpm run crowdin:push  # TODO: Add a input of Crowdin token
       #   env:
       #     CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
-
-  pages:
-    needs: crowdin
-    name: Deploy Pages
-    uses: ./.github/workflows/deploy-pages.yml
