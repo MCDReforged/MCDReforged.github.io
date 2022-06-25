@@ -10,15 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
       - uses: actions/setup-node@v3
         with:
-          cache: yarn
-      - run: yarn
-      # - run: yarn crowdin:push
+          node-version: lts/*
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # - run: pnpm run crowdin:push
       #   env:
       #     CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
 
   pages:
     needs: crowdin
-    name: GitHub Pages
-    uses: ./.github/workflows/github-pages.yml
+    name: Deploy Pages
+    uses: ./.github/workflows/deploy-pages.yml

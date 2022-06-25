@@ -1,0 +1,32 @@
+name: Deploy Pages
+on:
+  workflow_call:
+  schedule:
+    - cron: 11 0/6 * * *
+    - cron: 45 2/6 * * *
+    - cron: 14 4/6 * * *
+
+jobs:
+  pages:
+    name: Build and Deploy to Netlify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # - run: pnpm run crowdin:pull
+      #   env:
+      #     CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+      - run: pnpm run build
+      - name: Deploy Pages
+        run: |
+          pnpm exec ntl deploy --prod \
+          --dir ./build \
+          --site ${{ secrets.SITE_SUBDOMAIN }} \
+          --auth ${{ secrets.NETLIFY_PAT }}
